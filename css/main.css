@@ -1,0 +1,33 @@
+@font-face {
+  font-family: 'fontawesome';
+  src: url(../fonts/fontawesome-webfont.ttf);
+}
+
+.font-awesome {
+    font-family: fontawesome;
+}
+
+body {
+    background-color: #EEEEEE;
+}
+
+.newline {
+    white-space: pre-line;
+}
+
+/**-- Таблицы --**/
+.table {
+    transform-style: preserve-3d;
+}
+
+table.typography tbody tr td {
+    background-color: white;
+}
+
+table.typography tbody tr td.top {
+    border-top: solid 2px darkgray;
+}
+
+thead#grafik-thead {
+    background-color: lightcyan;
+}
