@@ -4,7 +4,7 @@
         <?php
         include 'include/head.php';
         ?>
-        <link href="<?=APPLICATION ?>/cleditor/cleditor.css" rel="stylesheet" rel="stylesheet" />
+        <link href="<?=APPLICATION ?>/cleditor/jquery.cleditor.css" rel="stylesheet" rel="stylesheet" />
         <style>
             textarea#input {
                 background-color: white;
@@ -25,7 +25,7 @@
         <script src='<?=APPLICATION ?>/cleditor/jquery.cleditor.js'></script>
         <script>
             $(document).ready(function () {
-                $("#input").cleditor()[0].focus();
+                $("#input").cleditor().focus();
             });
         </script>
     </body>
