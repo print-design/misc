@@ -17,7 +17,7 @@
         ?>
         <div class="container-fluid">
             <h1 class="ponomar">Принт-дизайн</h1>
-            <textarea id="input" name="input">Русский текст.</textarea>
+            <textarea id="input" name="input"><h1 class='oglavie'>Заголовок</h1><p class='ponomar'>Русский текст.</p></textarea>
         </div>
         <?php
         include 'include/footer.php';
