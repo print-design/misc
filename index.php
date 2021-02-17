@@ -18,6 +18,8 @@
         <div class="container-fluid">
             <h1 class="ponomar">Принт-дизайн</h1>
             <textarea id="input" name="input"><h1 class='oglavie'>Заголовок</h1><p class='ponomar'>Русский текст.</p></textarea>
+            <br/><br/><br/>
+            <button class="btn btn-info" id="accesscleditor">Нажми</button>
         </div>
         <?php
         include 'include/footer.php';
@@ -28,6 +30,10 @@
                 $("#input").cleditor({
                     docCSSFile: 'css/main.css'
                 })[0].focus();
+            });
+            
+            $('#accesscleditor').click(function(){
+                alert('CLICK');
             });
         </script>
     </body>
