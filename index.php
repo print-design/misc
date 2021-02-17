@@ -16,8 +16,8 @@
         include 'include/header.php';
         ?>
         <div class="container-fluid">
-            <h1>Принт-дизайн</h1>
-            <textarea id="input" name="input">Go ahead, take it for a test drive. Highlight some text and click some buttons.</textarea>
+            <h1 class="ponomar">Принт-дизайн</h1>
+            <textarea id="input" name="input">Русский текст.</textarea>
         </div>
         <?php
         include 'include/footer.php';
@@ -25,7 +25,9 @@
         <script src='<?=APPLICATION ?>/cleditor/jquery.cleditor.js'></script>
         <script>
             $(document).ready(function () {
-                $("#input").cleditor().focus();
+                $("#input").cleditor({
+                    docCSSFile: 'css/main.css'
+                })[0].focus();
             });
         </script>
     </body>

@@ -1,3 +1,6 @@
+@import 'fonts.css';
+@import 'sample.css';
+
 @font-face {
   font-family: 'fontawesome';
   src: url(../fonts/fontawesome-webfont.ttf);
@@ -30,4 +33,8 @@ table.typography tbody tr td.top {
 
 thead#grafik-thead {
     background-color: lightcyan;
+}
+
+.redtext {
+    color: red;
 }
