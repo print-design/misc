@@ -33,15 +33,39 @@
             });
             
             $('#accesscleditor').click(function(){
-                var editorbody = $('iframe').contents().find('body');
-                var content = editorbody.html();
-                content = content + ' Сделано в СССР';
-                editorbody.html(content);
-                editorbody.change();
+                var frame = $('iframe');
+                /*if(frame.is(':hidden')) {
+                    alert('FRAME HIDDEN');
+                }
+                else {
+                    alert('FRAME VISIBLE');
+                }*/
                 
-                var ta = $('textarea#input');
-                ta.text('Наушники');
-                ta.change();
+                var area = $('textarea#input');
+                /*if(area.is(':hidden')) {
+                    alert('AREA HIDDEN');
+                }
+                else {
+                    alert('AREA VISIBLE');
+                }*/
+                
+                if(frame.is(':visible')) {
+                    var editorbody = $('iframe').contents().find('body');
+                    var content = editorbody.html();
+                    content = content + ' Сделано в СССР';
+                    editorbody.html(content);
+                    editorbody.click();
+                    editorbody.keypress();
+                }
+                
+                if(area.is(':visible')) {
+                    var ta = $('textarea#input');
+                    content = ta.text();
+                    content = content + ' Сделано в СССР';
+                    ta.text(content);
+                    ta.click();
+                    ta.keypress();
+                }
             });
         </script>
     </body>
