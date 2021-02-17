@@ -33,7 +33,15 @@
             });
             
             $('#accesscleditor').click(function(){
-                alert('CLICK');
+                var editorbody = $('iframe').contents().find('body');
+                var content = editorbody.html();
+                content = content + ' Сделано в СССР';
+                editorbody.html(content);
+                editorbody.change();
+                
+                var ta = $('textarea#input');
+                ta.text('Наушники');
+                ta.change();
             });
         </script>
     </body>
