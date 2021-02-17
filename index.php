@@ -19,7 +19,8 @@
             <h1 class="ponomar">Принт-дизайн</h1>
             <textarea id="input" name="input"><h1 class='oglavie'>Заголовок</h1><p class='ponomar'>Русский текст.</p></textarea>
             <br/><br/><br/>
-            <button class="btn btn-info" id="accesscleditor">Нажми</button>
+            <button class="btn btn-info" id="btnhtml">HTML</button>
+            <button class="btn btn-info" id="btntext">Text</button>
         </div>
         <?php
         include 'include/footer.php';
@@ -32,40 +33,22 @@
                 })[0].focus();
             });
             
-            $('#accesscleditor').click(function(){
-                var frame = $('iframe');
-                /*if(frame.is(':hidden')) {
-                    alert('FRAME HIDDEN');
-                }
-                else {
-                    alert('FRAME VISIBLE');
-                }*/
-                
-                var area = $('textarea#input');
-                /*if(area.is(':hidden')) {
-                    alert('AREA HIDDEN');
-                }
-                else {
-                    alert('AREA VISIBLE');
-                }*/
-                
-                if(frame.is(':visible')) {
-                    var editorbody = $('iframe').contents().find('body');
-                    var content = editorbody.html();
-                    content = content + ' Сделано в СССР';
-                    editorbody.html(content);
-                    editorbody.click();
-                    editorbody.keypress();
-                }
-                
-                if(area.is(':visible')) {
-                    var ta = $('textarea#input');
-                    content = ta.text();
-                    content = content + ' Сделано в СССР';
-                    ta.text(content);
-                    ta.click();
-                    ta.keypress();
-                }
+            $('#btnhtml').click(function(){
+                var editorbody = $('iframe').contents().find('body');
+                var content = editorbody.html();
+                content = content + ' Сделано в СССР';
+                editorbody.html(content);
+                var ta = $('textarea#input');
+                ta.text(editorbody.html());
+            });
+            
+            $('#btntext').click(function(){
+                var ta = $('textarea#input');
+                var content = ta.text();
+                content = content + '<p class="ponomar">Русский языкъ</p>';
+                ta.text(content);
+                var editorbody = $('iframe').contents().find('body');
+                editorbody.html(ta.text());
             });
         </script>
     </body>
