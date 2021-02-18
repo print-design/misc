@@ -22,6 +22,7 @@
             <button class="btn btn-info" id="btnhtml">HTML</button>
             <button class="btn btn-info" id="btntext">Text</button>
             <button class="btn btn-info" id="setp">Set P</button>
+            <button class="btn btn-info" id="getsel">Get Sel</button>
         </div>
         <?php
         include 'include/footer.php';
@@ -59,6 +60,15 @@
                 if(editorbody.is(':visible')) {
                     $('iframe').contents().find("p").addClass('ponomar');
                     ta.text(editorbody.html());
+                }
+            });
+            
+            $('#getsel').click(function(){
+                var editorbody = $('iframe').contents().find('body');
+                var ta = $('textarea#input');
+                
+                if(editorbody.is(':visible')) {
+                    alert(editorbody.prop('selectionStart') + ' -- ' + editorbody.prop('selectionEnd'));
                 }
                 
                 if(ta.is(':visible')) {
