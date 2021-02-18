@@ -63,17 +63,51 @@
                 }
             });
             
-            $('#getsel').click(function(){
+            var textelement = null;
+            
+            $(document).ready(function(){
                 var editorbody = $('iframe').contents().find('body');
-                var ta = $('textarea#input');
                 
-                if(editorbody.is(':visible')) {
-                    alert(editorbody.prop('selectionStart') + ' -- ' + editorbody.prop('selectionEnd'));
-                }
-                
-                if(ta.is(':visible')) {
-                    alert(ta.prop('selectionStart') + ' -- ' + ta.prop('selectionEnd'));
-                }
+                editorbody.click(function(e){
+                    textelement = e.target;
+                    $(textelement).prop('class', 'ponomar');
+                    alert($(textelement).html());
+                    //alert(e.pageX);
+                });
+            });
+            
+            
+            /*            
+            function getWord(){
+                 // Method to get text in non-iframe
+        // var word = window.getSelection?window.getSelection():document.selection.createRange().text;
+ 
+                 // Method to get selected text in iframe
+        var word =document.getElementById("test_iframe").contentWindow.getSelection();
+        alert( word )
+    }
+    
+    // document.body.addEventListener("click", getWord, false);
+    let x,y;
+    //document.getElementById("test_iframe").contentWindow.onmousedown=function (event) {
+    document.document.getElementsByTagName('iframe').contentWindow.onmousedown=function (event) {
+        x = event.pageX;
+        y = event.pagey;
+    }
+    //document.getElementById("test_iframe").contentWindow.onmouseup=function (event) {
+    document.getElementsByTagName('iframe').contentWindow.onmouseup=function (event) {
+        let new_x = event.pageX;
+        let new_y = event.pagey;
+        if(x==new_x&&y==new_y){
+                         // Perform click event operation
+        }else {
+                         // Selected operation
+            getWord()
+        }
+    }*/
+            
+            $('#getsel').click(function(){
+                alert($('iframe').contents());
             });
         </script>
     </body>
