@@ -70,9 +70,16 @@
                 
                 editorbody.click(function(e){
                     textelement = e.target;
+                    //$(textelement).prop('class', 'ponomar');
+                    //$(textelement).text('Дима');
+                });
+            });
+            
+            $('#getsel').click(function(){
+                if(textelement != null) {
                     $(textelement).prop('class', 'ponomar');
                     $(textelement).text('Дима');
-                });
+                }
             });
             
             
@@ -104,10 +111,6 @@
             getWord()
         }
     }*/
-            
-            $('#getsel').click(function(){
-                alert($('iframe').contents());
-            });
         </script>
     </body>
 </html>
