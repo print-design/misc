@@ -5,7 +5,7 @@ include 'datamatrix.php';
     <body>
         <h1>Генерирование Data Matrix</h1>
         <p><a href="barcode-master/barcode-dmtx-test.html">barcode-dmtx-test.html</a></p>
-        <p><a href="idautomation/idautomation-datamatrix-demo-static.php">idautomation</a></p>
+        <p><a href="test/idautomation-datamatrix-demo-static.php">idautomation</a></p>
         <?php
         $source = '';
         $source = '475638475849388p_iG765kj&o8';
