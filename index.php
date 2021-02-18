@@ -21,6 +21,7 @@
             <br/><br/><br/>
             <button class="btn btn-info" id="btnhtml">HTML</button>
             <button class="btn btn-info" id="btntext">Text</button>
+            <button class="btn btn-info" id="setp">Set P</button>
         </div>
         <?php
         include 'include/footer.php';
@@ -49,6 +50,10 @@
                 ta.text(content);
                 var editorbody = $('iframe').contents().find('body');
                 editorbody.html(ta.text());
+            });
+            
+            $('#setp').click(function(){
+                //
             });
         </script>
     </body>
