@@ -17,7 +17,7 @@
         ?>
         <div class="container-fluid">
             <h1 class="ponomar">Принт-дизайн</h1>
-            <textarea id="input" name="input"><h1 class='oglavie'>Заголовок</h1><p class='ponomar'>Русский текст.</p></textarea>
+            <textarea id="input" name="input"><h1>Заголовок</h1><p style="font-size: 28px;">Русский текстъ.</p></textarea>
             <br/><br/><br/>
             <button class="btn btn-info" id="btnhtml">HTML</button>
             <button class="btn btn-info" id="btntext">Text</button>
@@ -56,8 +56,14 @@
                 var editorbody = $('iframe').contents().find('body');
                 var ta = $('textarea#input');
                 
-                alert(editorbody.is(':visible'));
-                alert(ta.is(':visible'));
+                if(editorbody.is(':visible')) {
+                    $('iframe').contents().find("p").addClass('ponomar');
+                    ta.text(editorbody.html());
+                }
+                
+                if(ta.is(':visible')) {
+                    alert(ta.prop('selectionStart') + ' -- ' + ta.prop('selectionEnd'));
+                }
             });
         </script>
     </body>
