@@ -76,7 +76,7 @@
             $('#getsel').click(function(){
                 if(textelement != null) {
                     $(textelement).prop('class', 'ponomar');
-                    textelement.innerText += " новый";
+                    textelement.textContent += " новый";
                     $('textarea#input').text($('iframe').contents().find('body').html());
                 }
             });
