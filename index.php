@@ -71,8 +71,7 @@
                 editorbody.click(function(e){
                     textelement = e.target;
                     $(textelement).prop('class', 'ponomar');
-                    alert($(textelement).html());
-                    //alert(e.pageX);
+                    $(textelement).text('Дима');
                 });
             });
             
