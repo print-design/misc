@@ -53,7 +53,11 @@
             });
             
             $('#setp').click(function(){
-                //
+                var editorbody = $('iframe').contents().find('body');
+                var ta = $('textarea#input');
+                
+                alert(editorbody.is(':visible'));
+                alert(ta.is(':visible'));
             });
         </script>
     </body>
