@@ -78,7 +78,7 @@
             $('#getsel').click(function(){
                 if(textelement != null) {
                     $(textelement).prop('class', 'ponomar');
-                    $(textelement).text('Дима');
+                    $(textelement).text($(textelement).text() + ' прибавление');
                 }
             });
             
