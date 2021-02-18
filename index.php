@@ -71,10 +71,18 @@
                 editorbody.click(function(e){
                     textelement = e.target;
                 });
+                
+                editorbody.keyup(function(e){
+                    textelement = e.target;
+                });
             });
             
             $('#getsel').click(function(){
                 if(textelement != null) {
+                    if(textelement.nodeName == 'BODY'){
+                        textelement = textelement.appendChild(document.createElement('p'));
+                    }
+                    
                     $(textelement).prop('class', 'ponomar');
                     textelement.textContent += " новый";
                     $('textarea#input').text($('iframe').contents().find('body').html());
