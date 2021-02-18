@@ -70,8 +70,6 @@
                 
                 editorbody.click(function(e){
                     textelement = e.target;
-                    //$(textelement).prop('class', 'ponomar');
-                    //$(textelement).text('Дима');
                 });
             });
             
@@ -79,6 +77,7 @@
                 if(textelement != null) {
                     $(textelement).prop('class', 'ponomar');
                     $(textelement).text($(textelement).text() + ' прибавление');
+                    $('textarea#input').text($('iframe').contents().find('body').html());
                 }
             });
             
