@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
     <body>
-        <h1>MISC</h1>
+        <p><a href="tooltip/">Tooltip</a></p>
     </body>
 </html>
