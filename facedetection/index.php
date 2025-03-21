@@ -8,6 +8,13 @@ include_once '../include/topscripts.php';
         include '../include/head.php';
         include '_head.php';
         ?>
+        <script src="<?=APPLICATION ?>/js/jquery.facedetection.min.js"></script>
+        <style>
+            .face {
+                position: absolute;
+                border: 4px solid white;
+            }
+        </style>
     </head>
     <body>
         <div class="container-fluid">
@@ -46,6 +53,12 @@ include_once '../include/topscripts.php';
                         </div>
                     </form>
                 </div>
+            </div>
+            <div class="row">
+                <div class="col-4"><img id="dima1" src="dima1.png" alt="dima1" class="img-fluid" /><div id="dima1_coords">QWE</div></div>
+                <div class="col-4"><img id="dima2" src="dima2.jpg" alt="dima2" class="img-fluid" /><div id="dima2_coords">QWE</div></div>
+                <div class="col-4"><img id="dima3" src="dima3.jpeg" alt="dima3" class="img-fluid" /><div id="dima3_coords">QWE</div></div>
+                <div class="col-12"><img id="thomas" src="thomasanders.jpg" alt="thomas" /><div id="thomas_coords"></div>QWE</div>
             </div>
         </div>
     </body>
@@ -123,6 +136,124 @@ include_once '../include/topscripts.php';
             $('#faceReaderWrapper').on('hidden.bs.modal', function() {
                 document.dispatchEvent(new Event('stop'));
             });
+            
+            /*$('#dima1').faceDetection({
+                complete: function(faces) {
+                    for (var i = 0; i < faces.length; i++) {
+                        $('<div>', {
+                            'class': 'face',
+                            'css': {
+                                'position': 'absolute',
+                                'left':     faces[i].x * faces[i].scaleX + 'px',
+                                'top':      faces[i].y * faces[i].scaleY + 'px',
+                                'width':    faces[i].width  * faces[i].scaleX + 'px',
+                                'height':   faces[i].height * faces[i].scaleY + 'px'
+                            }
+                        })
+                        .insertAfter(this);
+                    }
+                    
+                    faceData1 = '';
+                    jQuery.each(faces, function(name, face) {
+                        jQuery.each(face, function(name, value) {
+                            faceData1 += name + ': ' + value + '<br />';
+                        });
+                    });
+                    $('#dima1_coords').html(faceData1);
+                },
+                error: function (code, message) {
+                    alert('Error: ' + message);
+                }
+            });*/
+            
+            //var coords = $('#dima1').faceDetection();
+            
+            /*$('#dima2').faceDetection({
+                complete: function(faces) {
+                    for (var i = 0; i < faces.length; i++) {
+                        $('<div>', {
+                            'class': 'face',
+                            'css': {
+                                'position': 'absolute',
+                                'left':     faces[i].x * faces[i].scaleX + 'px',
+                                'top':      faces[i].y * faces[i].scaleY + 'px',
+                                'width':    faces[i].width  * faces[i].scaleX + 'px',
+                                'height':   faces[i].height * faces[i].scaleY + 'px'
+                            }
+                        })
+                        .insertAfter(this);
+                    }
+                    
+                    faceData2 = '';
+                    jQuery.each(faces, function(name, face) {
+                        jQuery.each(face, function(name, value) {
+                            faceData2 += name + ': ' + value + '<br />';
+                        });
+                    });
+                    $('#dima2_coords').html(faceData2);
+                },
+                error: function (code, message) {
+                    alert('Error: ' + message);
+                }
+            });*/
+        
+            $('#dima3').faceDetection({
+                complete: function(faces) {
+                    for (var i = 0; i < faces.length; i++) {
+                        $('<div>', {
+                            'class': 'face',
+                            'css': {
+                                'position': 'absolute',
+                                'left':     faces[i].x * faces[i].scaleX + 'px',
+                                'top':      faces[i].y * faces[i].scaleY + 'px',
+                                'width':    faces[i].width  * faces[i].scaleX + 'px',
+                                'height':   faces[i].height * faces[i].scaleY + 'px'
+                            }
+                        })
+                        .insertAfter(this);
+                    }
+                    
+                    faceData3 = '';
+                    jQuery.each(faces, function(name, face) {
+                        jQuery.each(face, function(name, value) {
+                            faceData3 += name + ': ' + value + '<br />';
+                        });
+                    });
+                    $('#dima3_coords').html(faceData3);
+                },
+                error: function (code, message) {
+                    alert('Error: ' + message);
+                }
+            });
+            
+            /*$('#thomas').faceDetection({
+                complete: function(faces) {
+                    for (var i = 0; i < faces.length; i++) {
+                        $('<div>', {
+                            'class': 'face',
+                            'css': {
+                                'position': 'absolute',
+                                'left':     faces[i].x * faces[i].scaleX + 'px',
+                                'top':      faces[i].y * faces[i].scaleY + 'px',
+                                'width':    faces[i].width  * faces[i].scaleX + 'px',
+                                'height':   faces[i].height * faces[i].scaleY + 'px'
+                            }
+                        })
+                        .insertAfter(this);
+                    }
+                    
+                    faceData4 = '';
+                    jQuery.each(faces, function(name, face) {
+                        jQuery.each(face, function(name, value) {
+                            faceData4 += name + ': ' + value + '<br />';
+                        });
+                    });
+                    $('#thomas_coords').html(faceData4);
+                },
+                error: function (code, message) {
+                    alert('Error: ' + message);
+                }
+            });*/
         });
     </script>
 </html>
