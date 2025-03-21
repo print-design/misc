@@ -2,6 +2,7 @@
 <html>
     <body>
         <p><a href="tooltip/">Tooltip</a></p>
-        <p><a href="facedetection/">Face detection</a></p>
+        <p><a href="javascript-camera-master/">Камера</a></p>
+        <p><a href="facedetection/">Распознавание лиц</a></p>
     </body>
 </html>
