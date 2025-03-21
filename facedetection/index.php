@@ -137,7 +137,7 @@ include_once '../include/topscripts.php';
                 document.dispatchEvent(new Event('stop'));
             });
             
-            /*$('#dima1').faceDetection({
+            $('#dima1').faceDetection({
                 complete: function(faces) {
                     for (var i = 0; i < faces.length; i++) {
                         $('<div>', {
@@ -164,7 +164,7 @@ include_once '../include/topscripts.php';
                 error: function (code, message) {
                     alert('Error: ' + message);
                 }
-            });*/
+            });
             
             //var coords = $('#dima1').faceDetection();
             
