@@ -39,7 +39,7 @@ include_once '../include/topscripts.php';
     <body>
         <div class="container-fluid" style="position: relative">
             <h1>Фигура</h1>
-            <div>
+            <div id="figure-area">
                 <div class="figure-point" id="fp1"><div class="figure-drag" data-number="1" style="width: 100%; height: 100%;"></div></div>
                 <div class="figure-point" id="fp2"><div class="figure-drag" data-number="2" style="width: 100%; height: 100%;"></div></div>
                 <div class="figure-point" id="fp3"><div class="figure-drag" data-number="3" style="width: 100%; height: 100%;"></div></div>
@@ -62,7 +62,7 @@ include_once '../include/topscripts.php';
         }
         
         $(document).ready(function(){          
-            $('.figure-drag').on('mousedown', function(event) {
+            $('.figure-drag').on('mousedown', function() {
                 AddPoint($(this));
             });
             
@@ -72,30 +72,28 @@ include_once '../include/topscripts.php';
                 }
             });
             
-            current_point = 0;
-            //handle_touchmove = true;
-            
-            $('.figure-drag').on('touchmove', function(event) {
-                $('input#figure').val($(event.target).attr('data-number'));
-                /*if($(this).attr('data-number') !== current_point) {
-                    AddPoint($(this));
-                    current_point = $(this).attr('data-number');
-                }*/
-                
-                /*if(handle_touchmove) {
-                    AddPoint($(this));
-                    handle_touchmove = false;
-                }
-                
-                if($(this).attr('data-number') !== current_point) {
-                    handle_touchmove = true;
-                }
-                
-                current_point = $(this).attr('data-number');*/
+            $('.figure-drag').on('mouseup', function() {
+                $('form#figure_login').submit();
             });
             
-            $('.figure-drag').on('touchend', function(event) {
-                alert(event.type);
+            $(document).on('mouseup', function() {
+                if($('form#figure_login').length) {
+                    $('form#figure_login').submit();
+                }
+            });
+            
+            current_point = 0;
+            
+            $('.figure-drag').on('touchmove', function(event) {
+                target = document.elementFromPoint(event.originalEvent.changedTouches[0].clientX, event.originalEvent.changedTouches[0].clientY);
+                if($(target).attr('data-number') !== current_point && $(target).attr('data-number') !== undefined) {
+                    AddPoint($(target));
+                    current_point = $(target).attr('data-number');
+                }
+            });
+            
+            $('.figure-drag').on('touchend', function() {
+                $('form#figure_login').submit();
             });
         });
     </script>
