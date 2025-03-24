@@ -17,49 +17,86 @@ include_once '../include/topscripts.php';
                 text-align: center;
             }
             
-            #fp1 { top: 10rem; left: 10rem; }
+            #fp1 { top: 10rem; left: 0rem; }
             
-            #fp2 { top: 10rem; left: 15rem; }
+            #fp2 { top: 10rem; left: 5rem; }
             
-            #fp3 { top: 10rem; left: 20rem; }
+            #fp3 { top: 10rem; left: 10rem; }
             
-            #fp4 { top: 15rem; left: 10rem; }
+            #fp4 { top: 15rem; left: 0rem; }
             
-            #fp5 { top: 15rem; left: 15rem; }
+            #fp5 { top: 15rem; left: 5rem; }
             
-            #fp6 { top: 15rem; left: 20rem; }
+            #fp6 { top: 15rem; left: 10rem; }
             
-            #fp7 { top: 20rem; left: 10rem; }
+            #fp7 { top: 20rem; left: 0rem; }
             
-            #fp8 { top: 20rem; left: 15rem; }
+            #fp8 { top: 20rem; left: 5rem; }
             
-            #fp9 { top: 20rem; left: 20rem; }
+            #fp9 { top: 20rem; left: 10rem; }
         </style>
     </head>
     <body>
-        <h1>Фигура</h1>
-        <div>
-            <div class="figure-point" id="fp1"><div class="figure-drag" style="width: 100%; height: 100%;" onmouseenter="EnterPoint(event, 1);"></div></div>
-            <div class="figure-point" id="fp2"><div class="figure-drag" style="width: 100%; height: 100%;" onmouseenter="EnterPoint(event, 2);"></div></div>
-            <div class="figure-point" id="fp3"><div class="figure-drag" style="width: 100%; height: 100%;" onmouseenter="EnterPoint(event, 3);"></div></div>
-            <div class="figure-point" id="fp4"><div class="figure-drag" style="width: 100%; height: 100%;" onmouseenter="EnterPoint(event, 4);"></div></div>
-            <div class="figure-point" id="fp5"><div class="figure-drag" style="width: 100%; height: 100%;" onmouseenter="EnterPoint(event, 5);"></div></div>
-            <div class="figure-point" id="fp6"><div class="figure-drag" style="width: 100%; height: 100%;" onmouseenter="EnterPoint(event, 6);"></div></div>
-            <div class="figure-point" id="fp7"><div class="figure-drag" style="width: 100%; height: 100%;" onmouseenter="EnterPoint(event, 7);"></div></div>
-            <div class="figure-point" id="fp8"><div class="figure-drag" style="width: 100%; height: 100%;" onmouseenter="EnterPoint(event, 8);"></div></div>
-            <div class="figure-point" id="fp9"><div class="figure-drag" style="width: 100%; height: 100%;" onmouseenter="EnterPoint(event, 9);"></div></div>
+        <div class="container-fluid" style="position: relative">
+            <h1>Фигура</h1>
+            <div>
+                <div class="figure-point" id="fp1"><div class="figure-drag" data-number="1" style="width: 100%; height: 100%;"></div></div>
+                <div class="figure-point" id="fp2"><div class="figure-drag" data-number="2" style="width: 100%; height: 100%;"></div></div>
+                <div class="figure-point" id="fp3"><div class="figure-drag" data-number="3" style="width: 100%; height: 100%;"></div></div>
+                <div class="figure-point" id="fp4"><div class="figure-drag" data-number="4" style="width: 100%; height: 100%;"></div></div>
+                <div class="figure-point" id="fp5"><div class="figure-drag" data-number="5" style="width: 100%; height: 100%;"></div></div>
+                <div class="figure-point" id="fp6"><div class="figure-drag" data-number="6" style="width: 100%; height: 100%;"></div></div>
+                <div class="figure-point" id="fp7"><div class="figure-drag" data-number="7" style="width: 100%; height: 100%;"></div></div>
+                <div class="figure-point" id="fp8"><div class="figure-drag" data-number="8" style="width: 100%; height: 100%;"></div></div>
+                <div class="figure-point" id="fp9"><div class="figure-drag" data-number="9" style="width: 100%; height: 100%;"></div></div>
+            </div>
+            <form method="post" id="figure_login">
+                <input type="text" name="figure" id="figure" />
+            </form>
         </div>
-        <form method="post" id="figure_login">
-            <input type="text" name="figure" id="figure" />
-        </form>
-        <div id="fig2" />
     </body>
     <script>
-        function EnterPoint(e, number) {
-            if(e.which === 1) {
-                let current = $('input#figure').val();
-                $('input#figure').val(current + number);
-            }
+        function AddPoint(sender) {
+            let current = $('input#figure').val();
+            $('input#figure').val(current + sender.attr('data-number'));
         }
+        
+        $(document).ready(function(){          
+            $('.figure-drag').on('mousedown', function(event) {
+                AddPoint($(this));
+            });
+            
+            $('.figure-drag').on('mouseenter', function(event) {
+                if(event.which === 1) {
+                    AddPoint($(this));
+                }
+            });
+            
+            current_point = 0;
+            //handle_touchmove = true;
+            
+            $('.figure-drag').on('touchmove', function(event) {
+                $('input#figure').val($(event.target).attr('data-number'));
+                /*if($(this).attr('data-number') !== current_point) {
+                    AddPoint($(this));
+                    current_point = $(this).attr('data-number');
+                }*/
+                
+                /*if(handle_touchmove) {
+                    AddPoint($(this));
+                    handle_touchmove = false;
+                }
+                
+                if($(this).attr('data-number') !== current_point) {
+                    handle_touchmove = true;
+                }
+                
+                current_point = $(this).attr('data-number');*/
+            });
+            
+            $('.figure-drag').on('touchend', function(event) {
+                alert(event.type);
+            });
+        });
     </script>
 </html>
