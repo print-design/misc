@@ -17,6 +17,11 @@ include_once '../include/topscripts.php';
                 text-align: center;
             }
             
+            .figure-line {
+                background-color: blue;
+                border-radius: .5rem;
+            }
+            
             #fp1 { top: 10rem; left: 0rem; }
             
             #fp2 { top: 10rem; left: 5rem; }
@@ -59,6 +64,12 @@ include_once '../include/topscripts.php';
         function AddPoint(sender) {
             let current = $('input#figure').val();
             $('input#figure').val(current + sender.attr('data-number'));
+            
+            $('#figure-area').append($("<div class='figure-line' style='position: relative; width: 8rem; height: .7rem;'>"));
+        }
+        
+        function DrawLine() {
+            //
         }
         
         $(document).ready(function(){          
