@@ -18,7 +18,7 @@ include_once '../include/topscripts.php';
             }
             
             .figure-line {
-                background-color: blue;
+                background-color: green;
                 border-radius: .5rem;
             }
             
