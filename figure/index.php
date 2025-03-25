@@ -83,15 +83,15 @@ include_once '../include/topscripts.php';
             let current_height = $('#fp' + number).height();
             
             if(previous_point > 0) {
-                previous_top = $('#fp' + previous_point).offset().top - figure_area_top + (current_width / 2) - (current_width / 4);
-                current_top = $('#fp' + number).offset().top - figure_area_top + (current_width / 2) - (current_width / 4);
-                previous_left = $('#fp' + previous_point).offset().left - figure_area_left + (current_height / 2) - (current_height / 4);
-                current_left = $('#fp' + number).offset().left - figure_area_left + (current_height / 2) - (current_height / 4);
+                previous_top = $('#fp' + previous_point).offset().top - figure_area_top + (current_height / 2) - (current_height / 8);
+                current_top = $('#fp' + number).offset().top - figure_area_top + (current_height / 2) - (current_height / 8);
+                previous_left = $('#fp' + previous_point).offset().left - figure_area_left + (current_width / 2) - (current_width / 8);
+                current_left = $('#fp' + number).offset().left - figure_area_left + (current_width / 2) - (current_width / 8);
                 
                 line_top = previous_top < current_top ? previous_top : current_top;
                 line_left = previous_left < current_left ? previous_left : current_left;
-                line_width = Math.abs(previous_point - number) > 2 ? current_width / 4 : current_width;
-                line_height = Math.abs(previous_point - number) > 2 ? current_height : current_height / 4;
+                line_width = Math.abs(previous_point - number) > 2 ? current_width / 4 : current_width + (current_width / 4);
+                line_height = Math.abs(previous_point - number) > 2 ? current_height + (current_height / 4) : current_height / 4;
                 
                 $('#figure-area').append($("<div class='figure-line' style='position: absolute; " + 
                         "top: " + line_top + "px;" + 
