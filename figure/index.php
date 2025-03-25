@@ -22,27 +22,33 @@ include_once '../include/topscripts.php';
                 border-radius: .5rem;
             }
             
-            #fp1 { top: 10rem; left: 0rem; }
+            #figure-area {
+                position: relative;
+                height: 16rem;
+                width: 16rem;
+            }
             
-            #fp2 { top: 10rem; left: 5rem; }
+            #fp1 { top: 0rem; left: 0rem; }
             
-            #fp3 { top: 10rem; left: 10rem; }
+            #fp2 { top: 0rem; left: 5rem; }
             
-            #fp4 { top: 15rem; left: 0rem; }
+            #fp3 { top: 0rem; left: 10rem; }
             
-            #fp5 { top: 15rem; left: 5rem; }
+            #fp4 { top: 5rem; left: 0rem; }
             
-            #fp6 { top: 15rem; left: 10rem; }
+            #fp5 { top: 5rem; left: 5rem; }
             
-            #fp7 { top: 20rem; left: 0rem; }
+            #fp6 { top: 5rem; left: 10rem; }
             
-            #fp8 { top: 20rem; left: 5rem; }
+            #fp7 { top: 10rem; left: 0rem; }
             
-            #fp9 { top: 20rem; left: 10rem; }
+            #fp8 { top: 10rem; left: 5rem; }
+            
+            #fp9 { top: 10rem; left: 10rem; }
         </style>
     </head>
     <body>
-        <div class="container-fluid" style="position: relative">
+        <div class="container-fluid">
             <h1>Фигура</h1>
             <div id="figure-area">
                 <div class="figure-point" id="fp1"><div class="figure-drag" data-number="1" style="width: 100%; height: 100%;"></div></div>
@@ -61,20 +67,48 @@ include_once '../include/topscripts.php';
         </div>
     </body>
     <script>
-        function AddPoint(sender) {
-            let current = $('input#figure').val();
-            $('input#figure').val(current + sender.attr('data-number'));
-            
-            $('#figure-area').append($("<div class='figure-line' style='position: relative; width: 8rem; height: .7rem;'>"));
-        }
+        previous_point = 0;
         
-        function DrawLine() {
-            //
+        function AddPoint(sender) {
+            let number = sender.attr('data-number');
+            
+            if(number != previous_point) {
+            let figure_val = $('input#figure').val();
+            $('input#figure').val(figure_val + sender.attr('data-number'));
+            
+            let figure_area_top = $('#figure-area').offset().top;
+            let figure_area_left = $('#figure-area').offset().left;
+
+            let current_width = $('#fp' + number).width();
+            let current_height = $('#fp' + number).height();
+            
+            if(previous_point > 0) {
+                previous_top = $('#fp' + previous_point).offset().top - figure_area_top + (current_width / 2) - (current_width / 4);
+                current_top = $('#fp' + number).offset().top - figure_area_top + (current_width / 2) - (current_width / 4);
+                previous_left = $('#fp' + previous_point).offset().left - figure_area_left + (current_height / 2) - (current_height / 4);
+                current_left = $('#fp' + number).offset().left - figure_area_left + (current_height / 2) - (current_height / 4);
+                
+                line_top = previous_top < current_top ? previous_top : current_top;
+                line_left = previous_left < current_left ? previous_left : current_left;
+                line_width = Math.abs(previous_point - number) > 2 ? current_width / 4 : current_width;
+                line_height = Math.abs(previous_point - number) > 2 ? current_height : current_height / 4;
+                
+                $('#figure-area').append($("<div class='figure-line' style='position: absolute; " + 
+                        "top: " + line_top + "px;" + 
+                        "left: " + line_left + "px;" + 
+                        "width: " + line_width + "px;" + 
+                        "height: " + line_height + "px;'>"));
+            }
+            
+            previous_point = sender.attr('data-number');
+        }
         }
         
         $(document).ready(function(){          
             $('.figure-drag').on('mousedown', function() {
-                AddPoint($(this));
+                if(event.which === 1) {
+                    AddPoint($(this));
+                }
             });
             
             $('.figure-drag').on('mouseenter', function(event) {
@@ -84,11 +118,13 @@ include_once '../include/topscripts.php';
             });
             
             $('.figure-drag').on('mouseup', function() {
-                $('form#figure_login').submit();
+                if(event.which === 1) {
+                    $('form#figure_login').submit();
+                }
             });
             
             $(document).on('mouseup', function() {
-                if($('form#figure_login').length) {
+                if(event.which === 1 && $('form#figure_login').length) {
                     $('form#figure_login').submit();
                 }
             });
